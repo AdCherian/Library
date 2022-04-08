@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Category list</title>
+<link rel="stylesheet" th:href="@{/css/site.css}">
+</head>
+<body>
+	<div th:replace="template"></div>
+	<div id="zawartosc">
+		 <h2>Category list</h2>
+		 <a href="/new_category" class="btn">Create New Category</a>
+		 <br/><br/>
+		 <table>
+			 <thead>
+				 <tr>
+				 	<th>Category ID</th>
+				 	<th>Description</th>
+				 </tr>
+			 </thead>
+			 <tbody>
+				 <tr th:each="category : ${lc}">
+					 <td th:text="${category.idc}">Category ID</td>
+					 <td th:text="${category.description}">Description</td>
+				 <td>
+					 <a th:href="@{'/edit_category/' + ${category.idc}}">Edit</a>
+					 &nbsp;&nbsp;&nbsp;
+					 <a th:href="@{'/delete_category/' + ${category.idc}}">Delete</a>
+				 </td>
+			 </tr>
+			 </tbody>
+		 </table>
+	</div>
+</body>
+</html>

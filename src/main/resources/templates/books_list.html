@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Books list</title>
+<link rel="stylesheet" th:href="@{/css/site.css}">
+</head>
+<body>
+	<div th:replace="template"></div>
+		 <h2>Books list</h2>
+		 <a href="/new_book" class="btn">Create New Book</a>
+		 
+		 
+		 <table>
+			 <thead>
+				 <tr>
+				 	<th>Book ID</th>
+				 	<th>Title</th>
+				 	<th>Publisher</th>
+				 	<th>Category</th>
+				 </tr>
+			 </thead>
+			 <tbody>
+				 <tr th:each="book : ${lb}">
+					 <td th:text="${book.idb}">Book ID</td>
+					 <td th:text="${book.title}">Title</td>
+					 <td th:text="${book.publisher.name}">Publisher</td>
+					 <td th:text="${book.category.description}">Category</td>
+				 <td>
+					 <a th:href="@{'/edit_book/' + ${book.idb}}">Edit</a>
+					 &nbsp;&nbsp;&nbsp;
+					 <a th:href="@{'/delete_book/' + ${book.idb}}">Delete</a>
+				 </td>
+			 </tr>
+			 </tbody>
+		 </table>
+	</div>
+</body>
+</html>

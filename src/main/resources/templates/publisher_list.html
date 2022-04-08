@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Books list</title>
+<link rel="stylesheet" th:href="@{/css/site.css}">
+</head>
+<body>
+	<div th:replace="template"></div>
+	<div id="zawartosc">
+		 <h2>Publisher list</h2>
+		 <a href="/new_publisher" class="btn">Create New Publisher</a>
+		 <br/><br/>
+		 <table>
+			 <thead>
+				 <tr>
+				 	<th>Publisher ID</th>
+				 	<th>Name</th>
+				 	<th>Address</th>
+				 </tr>
+			 </thead>
+			 <tbody>
+				 <tr th:each="publisher : ${lp}">
+					 <td th:text="${publisher.idp}">Publisher ID</td>
+					 <td th:text="${publisher.name}">Name</td>
+					 <td th:text="${publisher.address}">Address</td>
+				 <td>
+					 <a th:href="@{'/edit_publisher/' + ${publisher.idp}}">Edit</a>
+					 &nbsp;&nbsp;&nbsp;
+					 <a th:href="@{'/delete_publisher/' + ${publisher.idp}}">Delete</a>
+				 </td>
+			 </tr>
+			 </tbody>
+		 </table>
+	</div>
+</body>
+</html>
